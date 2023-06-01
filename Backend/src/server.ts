@@ -17,6 +17,7 @@ const options: cors.CorsOptions = {
 
 app.use(cors(options));
 
+app.use('/test', )
 
 app.get('/', (req, res) => {
   res.json({'Message':'Works'})
