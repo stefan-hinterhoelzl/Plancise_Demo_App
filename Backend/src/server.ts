@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 import express from "express";
 import morgan from "morgan";
 import cors from "cors";
+import { testRouter } from "./routes/test.routes";
 
 //Initialization
 const app = express();
@@ -17,11 +18,7 @@ const options: cors.CorsOptions = {
 
 app.use(cors(options));
 
-app.use('/test', )
-
-app.get('/', (req, res) => {
-  res.json({'Message':'Works'})
-})
+app.use('/test', testRouter);
 
 
 
