@@ -5,6 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { SnackbarComponent } from './shared/snackbar/snackbar.component';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -12,9 +18,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatIconModule,
+    MatButtonModule,
+    MatButtonToggleModule,
+    MatToolbarModule,
   ],
-  providers: [],
+  providers: [SnackbarComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
