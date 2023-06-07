@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
   snackbar = inject(SnackbarComponent)
 
   ngOnInit() {
-    this.snackbar.openSnackBar('Test')
+    
     
   }
 
