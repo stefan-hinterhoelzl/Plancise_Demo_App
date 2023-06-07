@@ -11,6 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { SnackbarComponent } from './shared/snackbar/snackbar.component';
+import { LoginComponent } from './login/login.component';
 
 
 
@@ -20,7 +21,8 @@ const app = initializeApp(environment.firebase)
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
