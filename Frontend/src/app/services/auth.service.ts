@@ -3,8 +3,10 @@ import { SnackbarComponent } from '../shared/snackbar/snackbar.component';
 import { Router } from '@angular/router';
 import {
   GoogleAuthProvider,
+  User,
   getAuth,
   getRedirectResult,
+  onAuthStateChanged,
   signInWithRedirect,
   signOut,
 } from 'firebase/auth';
@@ -13,7 +15,9 @@ import {
   providedIn: 'root',
 })
 export class AuthService {
-  constructor() {}
+  constructor() {
+    this.reactToLogin();
+  }
 
   router = inject(Router);
   snackbar = inject(SnackbarComponent);
@@ -24,16 +28,15 @@ export class AuthService {
     let provider = new GoogleAuthProvider();
 
     await signInWithRedirect(auth, provider);
+  }
 
+  async reactToLogin() {
+    const auth = getAuth();
     const result = await getRedirectResult(auth);
-    console.log(result)
     if (result) {
-      console.log(result)
       const user = result.user;
       this.snackbar.openSnackBar('Logged in!', 'green-snackbar');
-      this.router.navigate([' ']);
-    } else {
-      this.snackbar.openSnackBar('Login failed!', 'red-snackbar');
+      this.router.navigate(['']);
     }
   }
 
@@ -51,4 +54,30 @@ export class AuthService {
         );
       });
   }
+
+  get currentUser() {
+    const auth = getAuth();
+    return auth.currentUser;
+  }
 }
+
+
+export const authGuard = () => {
+  const router = inject(Router);
+  const snackbar = inject(SnackbarComponent);
+  const auth = getAuth();
+
+  return new Promise((resolve, reject) => {
+    const auth = getAuth();
+
+    onAuthStateChanged(auth, (user: User | null) => {
+      if (user) {
+        resolve(true);
+      } else {
+        router.navigate(["/login"]);
+        snackbar.openSnackBar("You are not logged in!", "red-snackbar")
+        resolve(false);
+      }
+    });
+  });
+};
