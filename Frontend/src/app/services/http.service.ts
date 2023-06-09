@@ -34,4 +34,12 @@ export class HttpService {
     return this.http.post<Ingredient>(this.BASE_URL + 'ingredients', newIngredient);
   }
 
+  putIngredient(changeIngredient: Ingredient): Observable<Ingredient> {
+    return this.http.put<Ingredient>(this.BASE_URL + 'ingredients', changeIngredient);
+  }
+
+  deleteIngredient(id: number): Observable<any> {
+    return this.http.delete<any>(this.BASE_URL + 'ingredients/'+id)
+  }
+
 }

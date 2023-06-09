@@ -14,7 +14,11 @@ Create Table Ingredient (
 Create Table MealContainsIngredient (
     meal  int,
     ingredient int,
+    quantity int, 
+    unit varchar(10),
     Primary Key (meal, ingredient),
     Foreign key (meal) References Meal (id) ON DELETE CASCADE,
     Foreign key (ingredient) References Ingredient (id) ON DELETE CASCADE
 );
+
+Select * from ingredients;
