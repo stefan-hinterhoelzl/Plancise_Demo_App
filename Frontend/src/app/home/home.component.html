@@ -1,6 +1,37 @@
 <div class="page-wrapper">
   <div class="flex-padding-20px">
+    <h1>Create Menu</h1>
+    <form [formGroup]='menuGroup'>
+      <div style = "display: flex; flex-direction: row;">
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+      <input matInput formControlName="nameControl">
+      </mat-form-field>
+      <mat-form-field appearance="outline" style = "margin-left: 50px">
+        <mat-label>Instructions</mat-label>
+        <textarea matInput formControlName="instructionControl">
+        </textarea>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" style = "margin-left: 50px">
+        <mat-label>Labels</mat-label>
+        <mat-select formControlName="ingredients" multiple>
+          <mat-option>Apfel</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
 
 
+    </form>
+    <button mat-fab color="primary" (click)="createMeal()">
+      <mat-icon>add</mat-icon>
+    </button>
+    <mat-list>
+      <div *ngFor="let meal of meals">
+        <div matListItemTitle>
+          <span>{{ meal.name }}</span>
+        </div>
+      </div>
+    </mat-list>
   </div>
 </div>

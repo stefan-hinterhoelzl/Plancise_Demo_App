@@ -16,6 +16,12 @@ import { MatMenuModule } from '@angular/material/menu'
 import { SnackbarComponent } from './shared/snackbar/snackbar.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
+import { MatListModule } from '@angular/material/list'
+import { HttpClientModule } from '@angular/common/http';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select'
 
 
 
@@ -41,6 +47,15 @@ const app = initializeApp(environment.firebase)
     MatCardModule,
     MatDividerModule,
     MatMenuModule,
+    MatListModule,
+    HttpClientModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatListModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatSelectModule
   ],
   providers: [SnackbarComponent],
   bootstrap: [AppComponent]

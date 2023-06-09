@@ -2,7 +2,8 @@ import dotenv from "dotenv";
 import express from "express";
 import morgan from "morgan";
 import cors from "cors";
-import { testRouter } from "./routes/test.routes";
+import { mealRouter } from "./routes/meal.routes";
+import { ingredientRouter } from "./routes/ingredient.routes";
 
 //Initialization
 const app = express();
@@ -18,7 +19,8 @@ const options: cors.CorsOptions = {
 
 app.use(cors(options));
 
-app.use('/test', testRouter);
+app.use('/meals', mealRouter);
+app.use('/ingredients', ingredientRouter);
 
 
 
