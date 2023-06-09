@@ -36,7 +36,7 @@ export class AuthService {
     if (result) {
       const user = result.user;
       this.snackbar.openSnackBar('Logged in!', 'green-snackbar');
-      this.router.navigate(['']);
+      this.router.navigate(['home']);
     }
   }
 

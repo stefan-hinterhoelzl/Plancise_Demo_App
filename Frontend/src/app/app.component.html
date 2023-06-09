@@ -3,9 +3,29 @@
     <mat-toolbar *ngIf="auth.currentUser" color="primary">
       <span>Plancise Demo App</span>
       <span class="spacer"></span>
-      <button mat-icon-button>
+      <button mat-icon-button
+      [matMenuTriggerFor]="menu">
         <mat-icon>menu</mat-icon>
       </button>
+      <mat-menu #menu="matMenu">
+        <div class="menu-header">
+          <img src="{{ auth.currentUser.photoURL }}" class="avatar" />
+          <span class="email">{{ auth.currentUser.email }}</span>
+        </div>
+        <mat-divider></mat-divider>
+        <!-- <button mat-menu-item>
+          <mat-icon>settings</mat-icon>
+          <span>User Settings</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>book</mat-icon>
+          <span>Docs</span>
+        </button> -->
+        <button mat-menu-item (click)="auth.logout()">
+          <mat-icon>logout</mat-icon>
+          <span>Logout</span>
+        </button>
+      </mat-menu>
     </mat-toolbar>
   </div>
   <div class = "router">

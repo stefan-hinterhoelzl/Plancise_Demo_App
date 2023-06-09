@@ -12,6 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCardModule } from '@angular/material/card'
 import { MatDividerModule } from '@angular/material/divider'
+import { MatMenuModule } from '@angular/material/menu'
 import { SnackbarComponent } from './shared/snackbar/snackbar.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
@@ -39,6 +40,7 @@ const app = initializeApp(environment.firebase)
     MatSnackBarModule,
     MatCardModule,
     MatDividerModule,
+    MatMenuModule,
   ],
   providers: [SnackbarComponent],
   bootstrap: [AppComponent]
