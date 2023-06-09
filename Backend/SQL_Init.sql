@@ -20,5 +20,3 @@ Create Table MealContainsIngredient (
     Foreign key (meal) References Meal (id) ON DELETE CASCADE,
     Foreign key (ingredient) References Ingredient (id) ON DELETE CASCADE
 );
-
-Select * from ingredients;
