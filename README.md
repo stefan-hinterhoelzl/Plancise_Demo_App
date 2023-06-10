@@ -6,8 +6,11 @@
   
   
   ![Login](https://github.com/stefan-hinterhoelzl/Plancise_Demo_App/blob/master/images/login.jpg)
-  (http://url/to/img.png)
-  (http://url/to/img.png)
-  (http://url/to/img.png)
-  (http://url/to/img.png)
+  ![Main Screen](https://github.com/stefan-hinterhoelzl/Plancise_Demo_App/blob/master/images/main-screen.jpg)
+  ![Create Ingredient](https://github.com/stefan-hinterhoelzl/Plancise_Demo_App/blob/master/images/ingredient-add.jpg)
+  ![make a meal](https://github.com/stefan-hinterhoelzl/Plancise_Demo_App/blob/master/images/make%20a%20meal%201.jpg)
+  ![make a meal](https://github.com/stefan-hinterhoelzl/Plancise_Demo_App/blob/master/images/make%20a%20meal%202.jpg)
+  ![meal view](https://github.com/stefan-hinterhoelzl/Plancise_Demo_App/blob/master/images/meal%20view.jpg)
+  ![logout](https://github.com/stefan-hinterhoelzl/Plancise_Demo_App/blob/master/images/logout.jpg)
+
   
