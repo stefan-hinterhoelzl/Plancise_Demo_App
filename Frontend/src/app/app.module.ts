@@ -25,6 +25,7 @@ import { MatSelectModule } from '@angular/material/select'
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CreateMealComponent } from './create-meal/create-meal.component';
+import { DisplayMealComponent } from './display-meal/display-meal.component';
 
 
 
@@ -38,6 +39,7 @@ const app = initializeApp(environment.firebase)
     LoginComponent,
     HomeComponent,
     CreateMealComponent,
+    DisplayMealComponent,
   ],
   imports: [
     BrowserModule,

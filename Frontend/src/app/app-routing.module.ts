@@ -5,6 +5,7 @@ import { authGuard } from './services/auth.service';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { CreateMealComponent } from './create-meal/create-meal.component';
+import { DisplayMealComponent } from './display-meal/display-meal.component';
 
 const routes: Routes = [
 
@@ -26,7 +27,18 @@ const routes: Routes = [
     path: 'create-meal',
     component: CreateMealComponent,
     canActivate: [authGuard]
-  }
+  },
+
+  {
+    path: 'display-meal/:mealId',
+    component: DisplayMealComponent,
+    canActivate: [authGuard]
+  },
+
+  {path: '**',
+   redirectTo: 'home',
+   pathMatch: 'full',
+  },
 ];
 
 @NgModule({

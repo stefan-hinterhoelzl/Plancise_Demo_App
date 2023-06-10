@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { SnackbarComponent } from '../shared/snackbar/snackbar.component';
-import { Ingredient, Meal } from '../models/models';
+import { Ingredient, IngredientQuantRaw, Meal, MealIngredient } from '../models/models';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -22,12 +22,20 @@ export class HttpService {
     return this.http.get<Meal[]>(this.BASE_URL + 'meals');
   }
 
-  postMeal(newMeal: Meal): Observable<Meal> {
-    return this.http.post<Meal>(this.BASE_URL + 'meals', newMeal)
+  getMealById(id: string): Observable<Meal> {
+    return this.http.get<Meal>(this.BASE_URL+ 'meals/'+id);
+  }
+
+  postMeal(newMeal: MealIngredient): Observable<any> {
+    return this.http.post<any>(this.BASE_URL + 'meals', newMeal, {responseType: 'json', observe: 'body'})
   }
 
   getIngredients(): Observable<Ingredient[]> {
     return this.http.get<Ingredient[]>(this.BASE_URL + 'ingredients');
+  }
+
+  getIngredientsForMeal(id: string): Observable<IngredientQuantRaw[]> {
+    return this.http.get<IngredientQuantRaw[]>(this.BASE_URL + 'ingredients/'+id);
   }
 
   postIngredient(newIngredient: Ingredient): Observable<Ingredient> {
@@ -38,8 +46,8 @@ export class HttpService {
     return this.http.put<Ingredient>(this.BASE_URL + 'ingredients', changeIngredient);
   }
 
-  deleteIngredient(id: number): Observable<any> {
-    return this.http.delete<any>(this.BASE_URL + 'ingredients/'+id)
+  deleteIngredient(id: string): Observable<any> {
+    return this.http.delete<any>(this.BASE_URL + 'ingredients/'+id);
   }
 
 }

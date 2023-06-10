@@ -44,7 +44,7 @@ export class HomeComponent implements OnInit {
     this.http.getIngredients().subscribe((value) => {
       this.ingredients.length = 0;
       this.ingredients.push(...value);
-      this.ingredients.sort((a, b) => a.id - b.id);
+      this.ingredients.sort((a, b) => a.id.localeCompare(b.id));
     });
   }
 
@@ -53,7 +53,7 @@ export class HomeComponent implements OnInit {
       next: (res: Ingredient) => {
         this.snackbar.openSnackBar(`${res.name} added.`, 'green-snackbar');
         this.ingredients.push(res);
-        this.ingredients.sort((a, b) => a.id - b.id);
+        this.ingredients.sort((a, b) => a.id.localeCompare(b.id));
       },
       error: (err) => {
         this.snackbar.openSnackBar(
@@ -73,7 +73,7 @@ export class HomeComponent implements OnInit {
           1
         );
         this.ingredients.push(res);
-        this.ingredients.sort((a, b) => a.id - b.id);
+        this.ingredients.sort((a, b) => a.id.localeCompare(b.id));
       },
       error: (err) => {
         this.snackbar.openSnackBar(

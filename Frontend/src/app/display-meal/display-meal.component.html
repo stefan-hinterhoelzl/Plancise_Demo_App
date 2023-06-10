@@ -1,0 +1,29 @@
+<div *ngIf="this.view$ | async as view" class="page-wrapper">
+  <div
+    class="flex-padding-20px"
+    style="justify-content: flex-start; align-items: center"
+  >
+    <h1>{{ view[0].name }}</h1>
+
+    <mat-card>
+      <mat-card-title> <h1>Instructions</h1> </mat-card-title>
+      <mat-card-content>
+        <span>{{ view[0].instructions }}</span>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+      <mat-card-title> Ingredients </mat-card-title>
+      <mat-card-content>
+        <div *ngFor="let ingredient of view[1]">
+          <div matListItemTitle>
+            <div class="ingredient-row">
+              <span >{{ ingredient.ingredientName }}</span>
+              <span>{{ ingredient.quantity }} {{ ingredient.unit }}</span>
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

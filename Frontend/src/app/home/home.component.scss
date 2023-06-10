@@ -37,7 +37,8 @@ mat-card {
   padding-bottom: 10px;
 }
 
-.ingredient-list-item:hover {
+
+mat-list-item:hover, .ingredient-list-item:hover {
   background: lightgrey;
 }
 

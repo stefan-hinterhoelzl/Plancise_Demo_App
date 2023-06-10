@@ -50,7 +50,7 @@ export class CreateIngredientDialogComponent implements OnInit {
     else {
       this.updateMode = false;
       this.ingridientName = ""
-      this.id = -1
+      this.id = ""
     }
   }
   ngOnInit(): void {
@@ -60,7 +60,7 @@ export class CreateIngredientDialogComponent implements OnInit {
 
   ingridientName: string;
   updateMode: boolean;
-  id: number;
+  id: string;
 
   save() {
     let ingridient: Ingredient = <Ingredient> {
