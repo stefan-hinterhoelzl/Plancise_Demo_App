@@ -6,7 +6,7 @@ import { Ingredient, Meal } from '../models/models';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CreateIngredientDialogComponent } from '../dialogs/create-ingredient-dialog/create-ingredient-dialog.component';
-import { ignoreElements } from 'rxjs';
+import { debounceTime, distinctUntilChanged, ignoreElements } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -27,6 +27,21 @@ export class HomeComponent implements OnInit {
     this.getMeals();
     this.getIngredients();
   }
+
+
+  searchControl = new FormControl("")
+
+  searchGroup = new FormGroup({
+    searchControl: this.searchControl
+  })
+
+
+  filter = this.searchControl.valueChanges
+    .pipe(
+      debounceTime(300),
+      distinctUntilChanged(),
+    )
+
 
 
 

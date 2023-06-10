@@ -8,7 +8,12 @@
             <mat-icon>add</mat-icon>
           </button>
         </div>
-
+        <form class = "form">
+        <mat-form-field style = "width: 300px;">
+          <mat-label>Search</mat-label>
+          <input formControlName = "searchControl" matInput type="text">
+        </mat-form-field>
+      </form>
         <mat-list>
           <mat-list-item *ngFor="let meal of meals" style = "cursor: pointer;" [routerLink]="['/display-meal/'+meal.id]">
             <div matListItemTitle >

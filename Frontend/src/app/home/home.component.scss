@@ -54,7 +54,11 @@ mat-list-item:hover, .ingredient-list-item:hover {
   flex: 1;
   overflow: hidden;
   font-size: 1.1rem;
+}
 
+.form {
+  display: flex;
+  width: 40%;
 }
 
 .meal-header, .ingredient-header {
