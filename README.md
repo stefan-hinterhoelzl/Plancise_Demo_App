@@ -17,8 +17,12 @@
   
   ![meal view](https://github.com/stefan-hinterhoelzl/Plancise_Demo_App/blob/master/images/meal%20view.jpg)
   
+  ![serach](https://github.com/stefan-hinterhoelzl/Plancise_Demo_App/blob/master/images/search-meal.jpg)
+    
+  ![search2](https://github.com/stefan-hinterhoelzl/Plancise_Demo_App/blob/master/images/search-meal-2.jpg)
+  
   ![logout](https://github.com/stefan-hinterhoelzl/Plancise_Demo_App/blob/master/images/logout.jpg)
   
-  TODO: Searchbar functionality 
+ 
 
   
