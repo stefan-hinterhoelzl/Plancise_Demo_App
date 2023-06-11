@@ -14,9 +14,16 @@ export async function getAllMeals(
   res: Response,
   next: NextFunction
 ) {
+
+  let searchword: string  = ""
+
+  if (req.query.q) searchword = String(req.query.q)
+
+  searchword = '%'+searchword+'%'
+
   try {
     const conn = await connect();
-    const result: Meal[] = (await conn.query<Meal[]>("SELECT * FROM Meal"))[0];
+    const result: Meal[] = (await conn.query<Meal[]>(`SELECT * FROM Meal Where name like ?`, [searchword]))[0];
 
     res.json(result);
   } catch (err: any) {

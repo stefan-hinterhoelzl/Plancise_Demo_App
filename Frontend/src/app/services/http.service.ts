@@ -18,8 +18,8 @@ export class HttpService {
 
 
 
-  getMeals(): Observable<Meal[]> {
-    return this.http.get<Meal[]>(this.BASE_URL + 'meals');
+  getMeals(searchterm: string): Observable<Meal[]> {
+    return this.http.get<Meal[]>(searchterm !== "" ? this.BASE_URL + 'meals?q='+searchterm : this.BASE_URL + 'meals');
   }
 
   getMealById(id: string): Observable<Meal> {

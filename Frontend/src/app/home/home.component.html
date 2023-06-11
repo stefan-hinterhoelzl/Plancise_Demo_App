@@ -8,9 +8,9 @@
             <mat-icon>add</mat-icon>
           </button>
         </div>
-        <form class = "form">
+        <form [formGroup]="searchGroup" class = "form">
         <mat-form-field style = "width: 300px;">
-          <mat-label>Search</mat-label>
+          <mat-label>Search Meals</mat-label>
           <input formControlName = "searchControl" matInput type="text">
         </mat-form-field>
       </form>

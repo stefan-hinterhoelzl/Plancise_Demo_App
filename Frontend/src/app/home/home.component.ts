@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { HttpService } from '../services/http.service';
 import { SnackbarComponent } from '../shared/snackbar/snackbar.component';
@@ -6,14 +6,14 @@ import { Ingredient, Meal } from '../models/models';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CreateIngredientDialogComponent } from '../dialogs/create-ingredient-dialog/create-ingredient-dialog.component';
-import { debounceTime, distinctUntilChanged, ignoreElements } from 'rxjs';
+import { Subscription, debounceTime, distinctUntilChanged, ignoreElements } from 'rxjs';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
   snackbar = inject(SnackbarComponent);
   auth = inject(AuthService);
   http = inject(HttpService);
@@ -23,8 +23,17 @@ export class HomeComponent implements OnInit {
     this.meals = [];
     this.ingredients = [];
   }
+
+
+  ngOnDestroy(): void {
+    this.filterSub.unsubscribe();
+    if (this.ingredientSub) this.ingredientSub.unsubscribe()
+    if (this.mealSub) this.mealSub.unsubscribe();
+  }
+
+
   ngOnInit(): void {
-    this.getMeals();
+    this.getMeals("");
     this.getIngredients();
   }
 
@@ -35,21 +44,21 @@ export class HomeComponent implements OnInit {
     searchControl: this.searchControl
   })
 
+  ingredientSub!: Subscription;
+  mealSub!: Subscription;
 
-  filter = this.searchControl.valueChanges
+  filterSub = this.searchControl.valueChanges
     .pipe(
       debounceTime(300),
-      distinctUntilChanged(),
-    )
-
-
-
+    ).subscribe(searchWord => {
+       this.getMeals(searchWord!)
+    })
 
   meals!: Meal[];
   ingredients!: Ingredient[];
 
-  getMeals() {
-    this.http.getMeals().subscribe((value) => {
+  getMeals(searchWord: string) {
+    this.http.getMeals(searchWord).subscribe((value) => {
       this.meals.length = 0;
       this.meals.push(...value);
     });
