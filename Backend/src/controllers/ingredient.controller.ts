@@ -65,7 +65,7 @@ export async function changeIngredient(req: Request, res: Response) {
 }
 
 export async function deleteIngredient(req: Request, res: Response) {
-  var id: string = req.params.projectId;
+  var id: string = req.params.id;
 
   try {
     const conn = await connect();

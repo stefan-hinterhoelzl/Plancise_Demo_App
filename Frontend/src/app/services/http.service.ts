@@ -30,6 +30,10 @@ export class HttpService {
     return this.http.post<any>(this.BASE_URL + 'meals', newMeal, {responseType: 'json', observe: 'body'})
   }
 
+  deleteMeal(id: string): Observable<any> {
+    return this.http.delete<any>(this.BASE_URL + 'meals/'+id)
+  }
+
   getIngredients(): Observable<Ingredient[]> {
     return this.http.get<Ingredient[]>(this.BASE_URL + 'ingredients');
   }

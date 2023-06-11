@@ -15,11 +15,11 @@ export async function getAllMeals(
   next: NextFunction
 ) {
 
-  let searchword: string  = ""
+  let searchword: string = ""
 
   if (req.query.q) searchword = String(req.query.q)
 
-  searchword = '%'+searchword+'%'
+  searchword = '%' + searchword + '%'
 
   try {
     const conn = await connect();
@@ -80,12 +80,25 @@ export async function createMeal(req: Request, res: Response) {
     //commit transaction
     connection.commit();
 
-    res.status(200).json({id:meal.id});
+    res.status(200).json({ id: meal.id });
   } catch (err: any) {
     console.log(connection);
     if (connection) await connection.rollback();
     await handleError(res, err);
   } finally {
     if (connection) connection.release();
+  }
+}
+
+export async function deleteMeal(req: Request, res: Response) {
+
+  var id: string = req.params.id;
+
+  try {
+    const conn = await connect();
+    await conn.query("DELETE FROM Meal WHERE id = ?", [id]);
+    res.json({ result: "success" });
+  } catch (err: any) {
+    handleError(res, err);
   }
 }
